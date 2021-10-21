@@ -1,0 +1,29 @@
+---
+- name: install a dhcp server using a role
+  hosts: all
+  user: vagrant
+  become: true  
+  
+  vars:
+  
+    
+    dhcp_subnets:
+      - ip: 192.168.121.0
+        netmask: 255.255.255.0
+        range_begin: 192.168.121.50
+        range_end: 192.168.121.100
+        routers: 192.168.121.1
+        broadcast-address: 192.168.121.254
+        default_lease_time: 800
+        max_lease_time: 7200 
+      
+
+
+          
+
+  
+  roles:
+   - role: dhcp_role
+
+
+
